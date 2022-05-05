@@ -86,8 +86,8 @@ app.view("vwExchangeRateCalc", async ({ ack, body, view, client, logger }) => {
           "selected_option"
         ]["value"];
       const responseChannel = body.response_urls[0].channel_id;
-      const responseUrl = body.response_urls[0].response_url;
 
+      //Handle request immediately
       await exchangeRateAppService.handleRateRequestAsync(
         responseChannel,
         amount,
@@ -95,6 +95,7 @@ app.view("vwExchangeRateCalc", async ({ ack, body, view, client, logger }) => {
         targetCur,
         client
       );
+
       logger.info("vwExchangeRateCalc submission success");
     }
   } catch (error) {
