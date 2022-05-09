@@ -22,7 +22,7 @@ app.command("/exchange", async ({ ack, body, client, logger, respond }) => {
   try {
     //Check slash command for help option.
     if (body.text.trim().toLowerCase() === "help") {
-      respond(exchangeRateAppService.getHelpText());
+      await respond(exchangeRateAppService.getHelpText());
     } else {
       //Parse and check for optional parameters
       const inputParms = exchangeRateAppService.validateParameters(body.text);
